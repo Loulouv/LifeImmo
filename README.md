@@ -8,7 +8,7 @@ Lancer le site:
     - Run php composer.phar install (or composer install)
     - Run php artisan key:generate
     - Run php artisan migrate
-
+    
 Lancer le serveur : 
-    - php artisan serve
-    - ou avec le localhost de wamp
+  - php artisan serve
+  - ou avec le localhost de wamp
