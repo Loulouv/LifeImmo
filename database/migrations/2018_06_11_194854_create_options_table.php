@@ -18,9 +18,9 @@ class CreateOptionsTable extends Migration
             $table->string('name', 25);
             $table->float('price');
             $table->tinyInteger('state')->default(0);
-            $table->integer('request_id')->unsigned();
+            $table->integer('order_id')->unsigned();
 
-            $table->foreign('request_id')->references('id')->on('requests');
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 

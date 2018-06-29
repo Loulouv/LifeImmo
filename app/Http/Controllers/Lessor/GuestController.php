@@ -1,11 +1,57 @@
 <?php
 
-namespace App\Http\Controllers\Lessor;
 
+namespace App\Http\Controllers\Lessor;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\RequestUpdateUser;
 use Illuminate\Http\Request;
 
-class LessorGuest extends Controller
+class GuestController extends Controller
 {
+
+
+    public function contactInformation()
+    { 
+        
+        //session()->forget('step');
+        return view ('guest.coordonnees');
+            
+        //session()->put('step', 'lessorContact');       
+    }
+
+    public function storeContactInformation(RequestUpdateUser $request)
+    {
+
+        $request->offsetUnset('_token');
+        $request->session()->put('guest', $request->all());
+        //session()->put('step', 'lessorClient');
+
+        if (session('action') == 'bailleur') {
+            return redirect('/bailleur/récapitulatif');
+        }elseif( session('action') == 'renter'){
+            //return redirect('/bailleur/récapitulatif');
+        }else{
+            return back();
+        }
+    }
+
+    public function updateContactInformation(RequestUpdateUser $request)
+    {
+
+        $request->offsetUnset('_token');
+        $request->session()->put('guest', $request->all());
+        //session()->put('step', 'lessorClient');
+
+        /*if (session('action') == 'bailleur') {
+            return redirect('/bailleur/récapitulatif');
+        }elseif( session('action') == 'renter'){
+            //return redirect('/bailleur/récapitulatif');
+        }else{
+            return back();
+        }*/
+        return back();
+    }
+
     /**
      * Display a listing of the resource.
      *

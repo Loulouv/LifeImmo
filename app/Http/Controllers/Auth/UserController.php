@@ -101,7 +101,8 @@ class UserController extends Controller
         $user->city   = $request->get('city');
         $user->save();
 
-        return redirect('/profile/edit');
+        return back();
+        //return redirect('/profile/edit');
         //return view ('users.edit', compact('user', $user))->with('message', 'Le profil a bien été mis à jour');
         
     }

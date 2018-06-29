@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
-//#^0[1-68][0-9]{8}$#
+
     /**
      * Create a new user instance after a valid registration.
      *

@@ -13,6 +13,11 @@
 
 Route::get('/', 'HomeController@index' );
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::get('/profile', 'auth\UserController@profile')->name('Profile');
 
 Route::get('/profile/edit', 'auth\UserController@edit');
@@ -39,17 +44,39 @@ Route::post('/document/load/all', 'auth\DocumentController@downloadAll');
 Route::get('/document/delete/all', 'auth\DocumentController@deleteAll');
 Route::post('/document/delete/all', 'auth\DocumentController@deleteAll');
 
-Route::get('/bailleur/pack', 'lessor\LessorController@pack');
-Route::post('/bailleur/pack/save', 'lessor\LessorController@storePack');
-Route::get('/bailleur/bien', 'lessor\LessorController@bien');
-Route::post('/bailleur/bien/save', 'lessor\LessorController@storeBien');
-Route::get('/bailleur/récapitulatif', 'lessor\LessorController@recap');
-Route::get('/bailleur/contact', 'lessor\LessorController@contactInformation');
-Route::post('/bailleur/contact/save', 'lessor\LessorController@storeContactInformation');
+/**
+ * Partie bailleur
+ */
 
-Route::post('/bailleur/finish', 'lessor\LessorController@finish');
+// fenetre bailleur
+Route::get('/bailleur/request', 'Lessor\LessorController@lessor');
+Route::post('/bailleur/request', 'Lessor\LessorController@lessor');
 
-Route::get('/bailleur/success', 'lessor\Lessor@success');
+//sauvegarder la demande dans la session
+//Route::get('/bailleur/pack/save', 'Pack\RequestController@storePack');
+Route::post('/bailleur/pack/save', 'Lessor\packController@storePack');
+
+//Pour le bien
+Route::get('/bailleur/bien', 'Lessor\bienController@bien');
+Route::post('/bailleur/bien/save', 'Lessor\bienController@storeBien');
+Route::post('/bailleur/bien/update', 'Lessor\bienController@updateBien');
+
+
+// récapitulatif de la commande
+Route::get('/bailleur/récapitulatif', 'Lessor\LessorController@recap');
+
+// les informations sont misent en BDD et envoyées par mail
+Route::post('/bailleur/finish', 'Lessor\LessorController@finish');
+
+//Page de succes 
+Route::get('/bailleur/success', 'Lessor\LessorController@success');
+
+//contact
+Route::get('/bailleur/contact', 'Lessor\GuestController@contactInformation');
+Route::post('/bailleur/contact/save', 'Lessor\GuestController@storeContactInformation');
+Route::post('/bailleur/contact/update', 'Lessor\GuestController@updateContactInformation');
+
+
 
 //Route::get('/profile', ['middleware' => 'auth', 'uses' => 'auth\UserController@profile'])->name('Profile');
 
@@ -63,9 +90,4 @@ Route::middleware('auth')->group(function () {
 
 });*/
 
-Auth::routes();
 
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');

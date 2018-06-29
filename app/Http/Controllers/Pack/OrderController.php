@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Pack;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class RequestController extends Controller
+class OrderController extends Controller
 {
-    
+
      /**
      * Store a pack bailleur dans session.
      *

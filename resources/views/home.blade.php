@@ -39,7 +39,7 @@
           <p>Le service professionnel de base à un prix imbattable.</p>
         </div>
         <div class="col-md-4">
-          <img src="Media/packàlacarte.png" width="90%">
+          <img src="Media/pack_a_la_carte.png" width="90%">
           <br>
           <br>
           <h1 style="color:white;">PACK À<br> LA CARTE</h1>

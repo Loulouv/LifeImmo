@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RequestDocument;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -92,16 +93,16 @@ class DocumentController extends Controller
      *
      * 
      */
-    public function create(Request $request)
+    public function create(RequestDocument $request)
     {
         //utilisateur
         $user = auth()->user();
 
         //$document = Document::firstOrCreate('name', $request->nom); 
         
-        $request->validate([
+        /*$request->validate([
             'document' => 'required|max:10000|mimes:doc,pdf,docx,zip,application/vnd.openxmlformats-officedocument.wordprocessingml.document,jpeg,png,jpg',
-        ]);
+        ]);*/
 
         
         //chemin pour sauvegarder les images
@@ -139,11 +140,11 @@ class DocumentController extends Controller
      *
      * 
      */
-    public function update(Request $request)
+    public function update(RequestDocument $request)
     {
-        $request->validate([
+        /*$request->validate([
             'document' => 'required|max:10000|mimes:doc,pdf,docx,zip,application/vnd.openxmlformats-officedocument.wordprocessingml.document,jpeg,png,jpg',
-        ]);
+        ]);*/
 
         //utilisateur
         $user = auth()->user();

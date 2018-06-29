@@ -2,6 +2,18 @@
 
 @section('content')
 
+@if($errors->count() > 0)
+    <div class="row  justify-content-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="alert alert-danger">
+                <button data-dismiss="alert" type="button" class="close">x</button>
+                    @foreach( $errors->all() as $message)
+                        <b>Erreur!</b> {{ $message }}
+                    @endforeach
+            </div>
+        </div>
+    </div>
+@endif
 
 @if(empty($userDocuments->first()))
 @else
@@ -19,8 +31,7 @@
 
                             <p> {{ $doc->name }} </p>
                             <div class="form-group">
-                                <input type="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="document" id="file"  value="{{ old('file') }}">
-                                {!! $errors->first('file', '<div class="invalid-feedback">:message</div>') !!}
+                                <input type="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="document" id="file"  value="{{ old('file') }}" required>
                             </div>
                             <input type='hidden' value="{{$doc->name}}" name='nom'/>
                             <input type='hidden' value={{$doc->id}} name='documentId'/>
@@ -54,6 +65,7 @@
 
 
                     </div>
+
                 <form method="POST" action="/document/load/all">
                     @csrf
                         <button type="submit" class="btn btn-primary">
@@ -105,8 +117,7 @@
 
                                         {{ $donnee }} 
                                         <div class="form-group">
-                                            <input type="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="document" id="file"  value="{{ old('file') }}">
-                                            {!! $errors->first('file', '<div class="invalid-feedback">:message</div>') !!}
+                                            <input type="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="document" id="file"  value="{{ old('file') }}" required>
                                         </div>
 
                                         <input type='hidden' value="{{$donnee}}" name='nom'/>
@@ -131,8 +142,7 @@
 
                                         {{ $donnee }} 
                                         <div class="form-group">
-                                            <input type="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="document" id="file"  value="{{ old('file') }}">
-                                            {!! $errors->first('file', '<div class="invalid-feedback">:message</div>') !!}
+                                            <input type="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="document" id="file"  value="{{ old('file') }}" required>
                                         </div>
 
                                         <input type='hidden' value="{{$donnee}}" name='nom'/>
@@ -154,8 +164,7 @@
                                     {{ $doc }} 
 
                                     <div class="form-group">
-                                        <input type="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="document" id="file"  value="{{ old('file') }}">
-                                        {!! $errors->first('file', '<div class="invalid-feedback">:message</div>') !!}
+                                        <input type="file" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" name="document" id="file"  value="{{ old('file') }}" required>
                                     </div>
 
                                     <input type='hidden' value="{{ $value }}" name='nom'/>
