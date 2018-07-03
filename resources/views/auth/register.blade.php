@@ -90,6 +90,17 @@
                             </div>
                         </div>
 
+
+                        
+                        @captcha
+                            @if ($errors->has('g-recaptcha-response'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </span>
+                            @endif
+                          
+                            
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -103,4 +114,7 @@
         </div>
     </div>
 </div>
+
+
+
 @endsection
