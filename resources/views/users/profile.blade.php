@@ -35,6 +35,7 @@
     <li class="nav-item">
 		<a class="nav-link" href="/profile/edit">@lang('Modifier votre profile')</a>
 		<a class="nav-link" href="/document/edit">@lang('Vos documents')</a>
+		<a class="nav-link" href="/profile/commandes">@lang('Vos commandes')</a>
     </li>
 
 

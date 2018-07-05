@@ -33,20 +33,27 @@ class User extends Authenticatable
 
 
     public function documents() {
-        return $this->hasMany('app\Document');
+        return $this->hasMany(Document::class);
     }
     public function downtimes() {
-        return $this->hasMany('app\Downtime');
+        return $this->hasMany(Downtime::class);
     }
     public function properties() {
-        return $this->hasMany('app\Property');
+        return $this->hasMany(Property::class);
     }
-    public function requests() {
-        return $this->hasMany('app\Request');
+    public function orders() {
+        //return $this->hasMany('app\Order');
+        return $this->hasMany(Order::class);
+    }
+    public function options() {
+        //return $this->hasMany('app\Order');
+        return $this->hasManyThrough(Order::class, Option::class);
     }
 
+
+
     public function visits() {
-        return $this->hasMany('app\Visit');
+        return $this->hasMany(Visit::class);
     }
 
 

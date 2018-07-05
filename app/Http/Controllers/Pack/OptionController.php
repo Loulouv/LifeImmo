@@ -10,4 +10,8 @@ class OptionController extends Controller
     public function update(Request $request){
 
     }
+
+    public function get(){
+       
+    }
 }

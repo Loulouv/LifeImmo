@@ -17,6 +17,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/**
+ * Profile
+ */
 
 Route::get('/profile', 'auth\UserController@profile')->name('Profile');
 
@@ -24,6 +27,15 @@ Route::get('/profile/edit', 'auth\UserController@edit');
 
 Route::post('/profile/update', 'auth\UserController@update');
 
+//Avancement des commandes pour le bailleur
+Route::get('/profile/commandes', 'Lessor\AvancementController@index');
+
+
+
+
+/**
+ * Gestion des documents
+ */
 Route::get('/document/edit', 'auth\DocumentController@gestion');
 Route::post('/document/edit', 'auth\DocumentController@gestion');
 
@@ -61,7 +73,6 @@ Route::get('/bailleur/bien', 'Lessor\bienController@bien');
 Route::post('/bailleur/bien/save', 'Lessor\bienController@storeBien');
 Route::post('/bailleur/bien/update', 'Lessor\bienController@updateBien');
 
-
 // récapitulatif de la commande
 Route::get('/bailleur/récapitulatif', 'Lessor\LessorController@recap');
 
@@ -77,17 +88,5 @@ Route::post('/bailleur/contact/save', 'Lessor\GuestController@storeContactInform
 Route::post('/bailleur/contact/update', 'Lessor\GuestController@updateContactInformation');
 
 
-
-//Route::get('/profile', ['middleware' => 'auth', 'uses' => 'auth\UserController@profile'])->name('Profile');
-
-
-/*
-Route::middleware('auth')->group(function () {
-    Route::resource('profile', 'auth\UserController', [
-        'only' => ['edit', 'update'],
-        'parameters' => ['profile' => 'user']
-    ]);
-
-});*/
 
 

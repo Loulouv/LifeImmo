@@ -21,14 +21,16 @@ class Order extends Model
     );
 
     public function users() {
-        return $this->belongsTo('app\User');
+        //return $this->belongsTo('app\User');
+        return $this->belongsTo(User::class);
+        
     }
     public function properties() {
-        return $this->belongsTo('app\Property');
+        return $this->belongsTo(Property::class);
     }
 
     public function options() {
-        return $this->hasMany('app\Option');
+        return $this->hasMany(Option::class);
     }
 
 }

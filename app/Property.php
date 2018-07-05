@@ -27,8 +27,8 @@ class Property extends Model
         return $this->belongsTo('app\User');
     }
 
-    public function requests() {
-        return $this->hasMany('app\Request');
+    public function orders() {
+        return $this->hasMany('app\Order');
     }
 
     public function media() {

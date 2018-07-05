@@ -20,8 +20,8 @@ class Option extends Model
         'state' => 0
     );
 
-    public function requests() {
-        return $this->belongsTo('app\Request');
+    public function orders() {
+        return $this->belongsTo(Order::class);
     }
     public $timestamps = false;
 }
