@@ -20,6 +20,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
+
                     @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -27,10 +28,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-
+                    
+                    
                     @else
 
-                        
+                        @if(auth()->user()->state == 0)
+                        <li class="nav-item">
+                            <a class="nav-link" href="/conseiller/administration">@lang('Administration')</a>
+                        </li>
+                        @endif
+
                     <li class="nav-item">
                         <a class="nav-link" href="/profile">@lang('Profil')</a>
                     </li>

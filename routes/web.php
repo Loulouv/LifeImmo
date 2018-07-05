@@ -88,5 +88,8 @@ Route::post('/bailleur/contact/save', 'Lessor\GuestController@storeContactInform
 Route::post('/bailleur/contact/update', 'Lessor\GuestController@updateContactInformation');
 
 
-
+/**
+ * Administrateur
+ */
+Route::get('/conseiller/administration', 'Admin\AdminController@TableauBord')->middleware('admin');
 

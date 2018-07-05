@@ -134,7 +134,7 @@ class LessorController extends Controller
         if (auth()->check()) {
             
             $user = auth()->user();
-
+            
             DB::beginTransaction();
             try {
     
