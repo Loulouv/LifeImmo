@@ -106,13 +106,13 @@ function inverseOption(idOption){
           <option id="choixdupack">
             Choix du pack
           </option>
-          <option id="complet">
+          <option id="complet" value = "complet">
             Pack complet
           </option>
-          <option id="summer">
+          <option id="summer" value = "summer">
             Summer Pack
           </option>
-          <option id="carte">
+          <option id="carte" value = "carte">
             A la carte
           </option>
         </select>

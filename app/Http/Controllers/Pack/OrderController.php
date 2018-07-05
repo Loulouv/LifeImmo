@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    
 
      /**
      * Store a pack bailleur dans session.

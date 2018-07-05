@@ -23,4 +23,5 @@ class Option extends Model
     public function requests() {
         return $this->belongsTo('app\Request');
     }
+    public $timestamps = false;
 }

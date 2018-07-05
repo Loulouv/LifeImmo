@@ -2,6 +2,6 @@
 
 @section('content')
 
-
+Success
 
 @endsection
