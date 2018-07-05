@@ -47,7 +47,11 @@ class LessorController extends Controller
        
     }
 
-    public function finish(){
+    public function finish(Request $request){
+
+        $request->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
 
         $demande = session()->get('demande');
         $bien = session()->get('bien');

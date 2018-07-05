@@ -20,6 +20,12 @@
         @csrf
         <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
+                        @captcha
+                        @if ($errors->has('g-recaptcha-response'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                            </span>
+                        @endif
                     <button type="submit" class="btn btn-primary">
                         {{ __('Envoyer ma commande') }}
                     </button>
