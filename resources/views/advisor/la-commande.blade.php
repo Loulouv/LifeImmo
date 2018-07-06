@@ -62,7 +62,7 @@
                             <p>  sa Surface : {{ $order->property->area }} m²</p>
                             <p> Nombre de pièces : {{ $order->property->rooms }} </p>
 
-
+                            <a class="nav-link" href="/conseiller/administration/bien/{{$order->property->id}}">@lang('Accéder à la propriété')</a>
                 </div>
             </div>
         </div>

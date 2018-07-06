@@ -98,3 +98,8 @@ Route::get('/conseiller/administration/commandes/etat/{state}', 'Pack\OrderContr
 Route::get('/conseiller/administration/commande/{id}', 'Pack\OrderController@getCommande')->middleware('admin');
 Route::post('/conseiller/administration/commande/{id}/update', 'Pack\OrderController@update')->middleware('admin');
 Route::post('/conseiller/administration/commande/{id}/update/options', 'Pack\OptionController@update')->middleware('admin');
+
+//les biens
+Route::get('/conseiller/administration/bien/{id}', 'Property\PropertyController@get')->middleware('admin');
+Route::post('/conseiller/administration/bien/{id}/update', 'Property\PropertyController@update')->middleware('admin');
+Route::post('/conseiller/administration/bien/{id}/update/state', 'Property\PropertyController@updateState')->middleware('admin');
