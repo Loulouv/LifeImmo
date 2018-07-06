@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class DowntimeController extends Controller
 {
-    //
+    public function index(){
+       
+    }
+
 }

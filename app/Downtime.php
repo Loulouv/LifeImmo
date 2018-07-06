@@ -15,7 +15,7 @@ class Downtime extends Model
         'begin', 'end',
     ];
 
-    public function users() {
-        return $this->belongsTo('app\User');
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

@@ -32,7 +32,6 @@ Route::get('/profile/commandes', 'Lessor\AvancementController@index');
 
 
 
-
 /**
  * Gestion des documents
  */
@@ -93,3 +92,9 @@ Route::post('/bailleur/contact/update', 'Lessor\GuestController@updateContactInf
  */
 Route::get('/conseiller/administration', 'Admin\AdminController@TableauBord')->middleware('admin');
 
+//commandes
+Route::get('/conseiller/administration/commandes', 'Admin\AdminController@commandes')->middleware('admin');
+Route::get('/conseiller/administration/commandes/etat/{state}', 'Pack\OrderController@commandeState')->middleware('admin');
+Route::get('/conseiller/administration/commande/{id}', 'Pack\OrderController@getCommande')->middleware('admin');
+Route::post('/conseiller/administration/commande/{id}/update', 'Pack\OrderController@update')->middleware('admin');
+Route::post('/conseiller/administration/commande/{id}/update/options', 'Pack\OptionController@update')->middleware('admin');

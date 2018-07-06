@@ -15,7 +15,7 @@ class Media extends Model
         'name', 'link',
     ];
 
-    public function properties() {
+    public function property() {
         return $this->belongsTo('app\Property');
     }
 }

@@ -21,13 +21,24 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    /*public function redirectTo(){
+
+        
+        //$precedent = session()->all();
+        
+        $precedent = redirect()->intended();
+        dd($precedent);
+
+        //return redirect()->session('backLogin');
+    }*/
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo = '/home';
-
+    
     /**
      * Create a new controller instance.
      *

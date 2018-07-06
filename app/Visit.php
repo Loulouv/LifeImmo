@@ -15,11 +15,11 @@ class Visit extends Model
         'date', 'disponibility', 
     ];
 
-    public function users() {
-        return $this->belongsTo('app\User');
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
     public function properties() {
-        return $this->belongsTo('app\Property');
+        return $this->belongsTo(Property::class);
     }
 }

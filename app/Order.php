@@ -20,13 +20,14 @@ class Order extends Model
         'state' => 0
     );
 
-    public function users() {
+    public function user() {
         //return $this->belongsTo('app\User');
         return $this->belongsTo(User::class);
         
     }
-    public function properties() {
+    public function property() {
         return $this->belongsTo(Property::class);
+        //return $this->belongsTo('App\Property');
     }
 
     public function options() {

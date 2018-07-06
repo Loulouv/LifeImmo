@@ -15,7 +15,7 @@ class Document extends Model
         'name', 'rname', 'path',
     ];
 
-    public function users() {
-        return $this->belongsTo('app\User');
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

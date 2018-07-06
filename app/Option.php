@@ -20,7 +20,7 @@ class Option extends Model
         'state' => 0
     );
 
-    public function orders() {
+    public function order() {
         return $this->belongsTo(Order::class);
     }
     public $timestamps = false;
