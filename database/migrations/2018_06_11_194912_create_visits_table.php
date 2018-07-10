@@ -17,8 +17,11 @@ class CreateVisitsTable extends Migration
             $table->increments('id');
             $table->timestamp('date');
             $table->text('disponibility')->nullable();
+            $table->tinyInteger('state')->default(0);
+            $table->timestamp('real_date');
             $table->integer('user_id')->unsigned();
             $table->integer('property_id')->unsigned();
+
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('property_id')->references('id')->on('properties');

@@ -105,7 +105,7 @@ class DocumentController extends Controller
         ]);*/
 
         
-        //chemin pour sauvegarder les images
+        //chemin pour sauvegarder les fichiers
         $path = "Users/user$user->id/Documents";
 
         //$name = $request->file('document')->getClientOriginalName();
@@ -125,7 +125,7 @@ class DocumentController extends Controller
         $document->path = $path; 
         //$document->file = $request->get('size'); 
 
-        $request->file('document')->storeAs($path, $docname, 'public');
+        $request->file('document')->storeAs($path, $docname, 'local');
 
         $user->documents()->save($document);
 
@@ -161,13 +161,13 @@ class DocumentController extends Controller
 
         //enregistrement en bdd
         $document = Document::findOrFail($request->documentId);
-        $file = storage_path().'/app/public/'.$document->path.'/'.$document->rname;
+        $file = storage_path().'/app/'.$document->path.'/'.$document->rname;
         $document->name = $request->get('nom'); 
         $document->rname = $docname; 
         $document->path = $path;
 
         unlink($file);
-        $request->file('document')->storeAs($path, $docname, 'public');
+        $request->file('document')->storeAs($path, $docname, 'local');
 
         $document->save();
 
@@ -185,7 +185,7 @@ class DocumentController extends Controller
     public function delete(Request $request){
 
         $document = Document::findOrFail($request->documentId);
-        $file = storage_path().'/app/public/'.$document->path.'/'.$document->rname;
+        $file = storage_path().'/app/'.$document->path.'/'.$document->rname;
 
         unlink($file);
 
@@ -207,7 +207,8 @@ class DocumentController extends Controller
         $document = Document::where('user_id', $user->id)->get()->all();
 
         foreach($document as $key => $value){
-            $file = storage_path().'/app/public/'.$value->path.'/'.$value->rname;
+            $file = storage_path().'/app/'.$value->path.'/'.$value->rname;
+
             unlink($file);
     
             $value->delete();
@@ -225,7 +226,7 @@ class DocumentController extends Controller
     public function download(Request $request){
 
         $document = Document::findOrFail($request->documentId);
-        $file = storage_path().'/app/public/'.$document->path.'/'.$document->rname;
+        $file = storage_path().'/app/'.$document->path.'/'.$document->rname;
 
         return Response::download($file);
 
@@ -247,8 +248,8 @@ class DocumentController extends Controller
             $id = $user->id;
         }
 
-        $pathZip = storage_path()."/DocZip/Documents.zip";
-        $files = storage_path().'/app/public/'."Users/user$user->id/Documents/";
+        $pathZip = storage_path().'/app/'."Users/user$user->id/DocZip/Documents.zip";
+        $files = storage_path().'/app/'."Users/user$user->id/Documents/";
 
         $zipper = new \Chumper\Zipper\Zipper;
         $zipper->make($pathZip)->add($files);

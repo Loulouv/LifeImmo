@@ -58,6 +58,7 @@
                                         </button>
                                 </form>
                                 <a class="nav-link" href="/conseiller/administration/commande/{{$value->id}}">@lang('Plus d\'informations')</a>
+                                <a class="nav-link" href="/conseiller/administration/bien/{{$value->propertyId}}">@lang('Accéder à la propriété')</a>
 
                         </div>
                     </div>

@@ -15,7 +15,7 @@ class Property extends Model
         'address', 'cp', 'city', 'name', 
         'building', 'floor', 'letterbox', 'location', 
         'type', 'area', 'rooms', 'description', 
-        'price', 'furniture', 'energy_class', 'ges', 'state', 
+        'price', 'furniture', 'energy_class', 'ges','link', 'state', 
     ];
 
     protected $attributes = array(
@@ -31,8 +31,8 @@ class Property extends Model
         return $this->hasMany('app\Order');
     }
 
-    public function media() {
-        return $this->hasMany('app\Media');
+    public function medias() {
+        return $this->hasMany(Media::class);
     }
 
     public function visits() {

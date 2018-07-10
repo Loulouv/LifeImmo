@@ -9,13 +9,38 @@ use App\Http\Requests\RequestpropertyUpdate;
 class PropertyController extends Controller
 {
 
+    public function getRenting(){
+        //les biens : state = 1, c'est à dire en location
+        $biens = Property::where('state', 1)->get()->all();
+
+        foreach($biens as $key => $value){
+            $biens[$key]['medias'] = $value->medias->where('name', 'photo')->first();
+        }
+
+        return view('property.rent', compact('biens', $biens));
+    }
+
+
+
     public function get($id){
 
+        $nameMedia = [
+            'photo' => 'photo',
+            'photo 360' => 'photo_360',
+            'vidéo' => 'video',
+            'visite virtuelle'=> 'visite_virtuelle'
+        ];
         $bien = Property::find($id);
         $proprietaire = $bien->user;
         $medias = $bien->medias;
 
-        return view('advisor.edit-propriété', compact('bien', $bien, 'proprietaire', $proprietaire, 'medias', $medias));
+        if(auth()->check() and auth()->user()->state == 0){
+            return view('advisor.edit-propriété', compact('bien', $bien, 'proprietaire', $proprietaire, 'medias', $medias, 'nameMedia', $nameMedia));
+        }else{
+            return view('property.la-propriété', compact('bien', $bien, 'medias', $medias));
+        }
+        
+
     }
 
     public function update(RequestpropertyUpdate $request, $id){
@@ -39,6 +64,12 @@ class PropertyController extends Controller
         return back();
     }
     
+    public function updateUrl(Request $request, $id){
+        $bien = Property::find($id);
+        $bien->link = $request->link;
+        $bien->save();
+        return back();
+    }
 
 
 }

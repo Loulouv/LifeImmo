@@ -16,6 +16,7 @@ class OrderController extends Controller
         foreach($order as $key => $value){
             $order[$key]['user'] = $order[$key]->user;
             $order[$key]['options'] = $order[$key]->options->all();
+            $order[$key]['propertyId'] = $order[$key]->property->id;
         }
         return view('advisor.commandes-state', compact('order', $order, 'state', $state));
     }
@@ -46,6 +47,8 @@ class OrderController extends Controller
             DB::commit();
             
             //envoyer un mail : a faire
+        }else{
+            $order->save();
         }
 
         return back();

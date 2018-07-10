@@ -82,10 +82,30 @@ Route::post('/bailleur/finish', 'Lessor\LessorController@finish');
 Route::get('/bailleur/success', 'Lessor\LessorController@success');
 
 //contact
-Route::get('/bailleur/contact', 'Lessor\GuestController@contactInformation');
-Route::post('/bailleur/contact/save', 'Lessor\GuestController@storeContactInformation');
-Route::post('/bailleur/contact/update', 'Lessor\GuestController@updateContactInformation');
+Route::get('/bailleur/contact', 'Guest\GuestController@contactInformation');
+Route::post('/bailleur/contact/save', 'Guest\GuestController@storeContactInformation');
+Route::post('/bailleur/contact/update', 'Guest\GuestController@updateContactInformation');
 
+
+/**
+ * Partie locataire
+ */
+Route::get('/location/biens', 'Property\PropertyController@getRenting');
+Route::get('/bien/{id}', 'Property\PropertyController@get');
+
+//commancer la demande de rendez-vous
+Route::post('/locataire/index', 'Renter\VisitController@index');
+
+//guest
+Route::get('/locataire/contact', 'Guest\GuestController@contactInformation');
+Route::post('/locataire/contact/save', 'Guest\GuestController@storeContactInformation');
+
+// indication des horaires
+Route::get('/locataire/rendez-vous', 'Renter\VisitController@visit');
+Route::post('/locataire/rendez-vous', 'Renter\VisitController@visit');
+
+// valider la visite
+Route::post('/locataire/rendez-vous/validate', 'Renter\VisitController@validateVisit');
 
 /**
  * Administrateur
@@ -103,3 +123,8 @@ Route::post('/conseiller/administration/commande/{id}/update/options', 'Pack\Opt
 Route::get('/conseiller/administration/bien/{id}', 'Property\PropertyController@get')->middleware('admin');
 Route::post('/conseiller/administration/bien/{id}/update', 'Property\PropertyController@update')->middleware('admin');
 Route::post('/conseiller/administration/bien/{id}/update/state', 'Property\PropertyController@updateState')->middleware('admin');
+Route::post('/conseiller/administration/bien/{id}/update/url', 'Property\PropertyController@updateUrl')->middleware('admin');
+
+//médias
+Route::post('/conseiller/administration/bien/{id}/media/create', 'Property\MediaController@create')->middleware('admin');
+Route::post('/conseiller/administration/bien/media/{id}/delete', 'Property\MediaController@delete')->middleware('admin');

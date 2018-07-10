@@ -12,8 +12,13 @@ class Visit extends Model
      * @var array
      */
     protected $fillable = [
-        'date', 'disponibility', 
+        'date', 'disponibility', 'real_date', 'state',
     ];
+
+    protected $attributes = array(
+        // 0 : demande non vue par le conseiller
+        'state' => 0
+    );
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -22,4 +27,5 @@ class Visit extends Model
     public function properties() {
         return $this->belongsTo(Property::class);
     }
+    public $timestamps = false;
 }

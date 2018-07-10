@@ -12,7 +12,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'pack', 'state', 
+        'pack', 'price', 'state', 
     ];
 
     protected $attributes = array(

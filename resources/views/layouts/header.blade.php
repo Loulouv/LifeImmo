@@ -15,6 +15,9 @@
                         <li class="nav-item">
                                 <a class="nav-link" href="/bailleur/request">@lang('Je suis Bailleur')</a>
                         </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="/location/biens">@lang('Je suis Locataire')</a>
+                        </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

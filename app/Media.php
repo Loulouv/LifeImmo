@@ -12,7 +12,7 @@ class Media extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'link',
+        'name', 'file', 'path'
     ];
 
     public function property() {

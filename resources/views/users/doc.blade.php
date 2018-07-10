@@ -187,6 +187,16 @@
             </div>
         </div>
     </div>
+
+    @if(session('action') == 'locataire')
+        <form method="POST" action="/locataire/rendez-vous">
+            @csrf
+        <div class="col-md-6 offset-md-4">
+            <button type="submit" class="btn btn-primary">
+                {{ __('Programmer le rendez-vous') }}
+            </button>
+        </div>
+    @endif
 @endif
 
 

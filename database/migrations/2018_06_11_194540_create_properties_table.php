@@ -31,6 +31,7 @@ class CreatePropertiesTable extends Migration
             $table->string('furniture', 125)->nullable();
             $table->string('energy_class', 125)->nullable();
             $table->string('ges', 125)->nullable();
+            $table->text('link')->nullable();
             $table->tinyInteger('state')->default(0);
             $table->unsignedInteger('user_id');
             $table->timestamps();

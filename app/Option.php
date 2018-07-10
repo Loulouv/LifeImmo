@@ -12,7 +12,7 @@ class Option extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'price', 'state',
+        'name', 'state',
     ];
 
     protected $attributes = array(

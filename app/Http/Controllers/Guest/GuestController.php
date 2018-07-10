@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\Lessor;
+namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RequestUpdateUser;
 use Illuminate\Http\Request;
@@ -28,8 +28,8 @@ class GuestController extends Controller
 
         if (session('action') == 'bailleur') {
             return redirect('/bailleur/récapitulatif');
-        }elseif( session('action') == 'renter'){
-            //return redirect('/bailleur/récapitulatif');
+        }elseif( session('action') == 'locataire'){
+            return redirect('/locataire/rendez-vous');
         }else{
             return back();
         }

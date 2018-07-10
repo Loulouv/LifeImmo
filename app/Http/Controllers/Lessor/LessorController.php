@@ -59,17 +59,17 @@ class LessorController extends Controller
 
         //les différentes variables
         $options = [
-            'com' => 1.2,
-            'photo360' => 2.1,
-            'fly' => 3.3,
-            'rdv' => 4.5,
-            'can' => 5.4,
-            'vis' => 6.7,
-            'dos' => 7.6,
-            'bail' => 9.8,
-            'edl' => 10.9,
-            'dosc' => 1.1,
-            'vod' => 1.2
+            'Communication' => 1.2,
+            'Photo 360' => 2.1,
+            'Flyers' => 3.3,
+            'Prise de rdv' => 4.5,
+            'Présélection des candidats' => 5.4,
+            'Visites' => 6.7,
+            'Constitution des dossiers' => 7.6,
+            'Rédaction du Bail' => 9.8,
+            "Rédaction de l\'EDL" => 10.9,
+            'Remise du dossier complet' => 1.1,
+            'Vidéo' => 1.2
         ];
         $total = 0;
         $packComplet = 399;
@@ -84,42 +84,9 @@ class LessorController extends Controller
         }
         if($demande['pack'] == 'carte'){
             foreach($demande['choixOption'] as $value){
-                switch ($value) {
-                    case 'Communication':
-                      $total = $total + intval($options['com'] * $surface);
-                      break;
-                    case 'Vidéo':
-                      $total = $total + intval($options['vod'] * $surface);
-                      break;
-                    case 'Photo 360':
-                      $total = $total + intval($options['photo360'] * $surface);
-                      break;
-                    case 'Flyers':
-                      $total = $total + intval($options['fly'] * $surface);
-                      break;
-                    case 'Prise de rdv':
-                      $total = $total + intval($options['rdv'] * $surface);
-                      break;
-                    case 'Présélection des candidats':
-                      $total = $total + intval($options['can'] * $surface);
-                      break;
-                    case 'Visites':
-                      $total = $total + intval($options['vis'] * $surface);
-                      break;
-                    case 'Constitution des dossiers':
-                      $total = $total + intval($options['dos'] * $surface);
-                      break;
-                    case 'Rédaction du Bail':
-                      $total = $total + intval($options['bail'] * $surface);
-                      break;
-                    case 'Rédaction de l\'EDL':
-                      $total = $total + intval($options['edl'] * $surface);
-                      break;
-                    case 'Remise du dossier complet':
-                      $total = $total + intval($options['dosc'] * $surface);
-                      break;
-                }               
-            }
+                    $total = $total + intval($options[$value] * $surface);   
+                }      
+            
             $total = intval($total);
             if($total >= $packComplet){
                 $total = $packComplet;
@@ -190,69 +157,5 @@ class LessorController extends Controller
         return view ('lessor.success');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
 }
