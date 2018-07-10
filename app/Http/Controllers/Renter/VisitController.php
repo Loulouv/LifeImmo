@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Visit;
 use App\Property;
 use Illuminate\Http\Request;
+use App\Http\Requests\RequestVisit;
 
 use Illuminate\Support\Facades\DB;
 use App\Mail\Locataire;
@@ -34,7 +35,7 @@ class VisitController extends Controller
         return view('renter.visit');
     }
 
-    public function validateVisit(Request $request){
+    public function validateVisit(RequestVisit $request){
 
         $request->offsetUnset('_token');
         $bien = Property::find(session()->get('propertyId'));
