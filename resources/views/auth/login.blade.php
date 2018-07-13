@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -49,12 +50,14 @@
                             </div>
                         </div>
                         
-                        @captcha
-                        @if ($errors->has('g-recaptcha-response'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                        </span>
-                        @endif
+                        <div class="form-group">
+                            @if (Request::has('previous'))
+                                <input type="hidden" name="previous" value="{{ Request::get('previous') }}">
+                            @else
+                                <input type="hidden" name="previous" value="{{ URL::previous() }}">
+                            @endif
+                        </div>
+
             
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">

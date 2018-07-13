@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -21,31 +22,33 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /*public function redirectTo(){
 
-        
-        //$precedent = session()->all();
-        
-        $precedent = redirect()->intended();
-        dd($precedent);
+    protected function redirectTo(){
 
-        //return redirect()->session('backLogin');
-    }*/
+        //return (redirect()->guest(url()->previous()));
+        if ($this->request->has('previous')) {
+            $this->redirectTo = $this->request->get('previous');
+        }
+
+        return $this->redirectTo ?? '/home';
+
+    }
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
     
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        $this->request = $request;
         $this->middleware('guest')->except('logout');
     }
 
@@ -54,8 +57,8 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             $this->username() => 'required', 
-            'password' => 'required',
-            'g-recaptcha-response' => 'required|captcha'
+            'password' => 'required'
+            //'g-recaptcha-response' => 'required|captcha'
             // new rules here
         ]);
     }*/

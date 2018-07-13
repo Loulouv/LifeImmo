@@ -66,6 +66,9 @@ class UserController extends Controller
             'fname' => 'required|string|max:255',
             'sname' => 'required|string|max:255',
             'phone' => 'required|regex:/(^0[1-68][0-9]{8}$)/',
+            'address' => 'nullable|string|max:255',
+            'cp' => 'nullable|regex:/(^[0-9]{5,5}$)/',
+            'city' => 'nullable|string|max:255',
         ]);
 
         $user->fname  = $request->get('fname');

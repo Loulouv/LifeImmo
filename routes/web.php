@@ -11,24 +11,25 @@
 |
 */
 
-Route::get('/', 'HomeController@index' );
-
+//autentification
 Auth::routes();
 
+//home
+Route::get('/', 'HomeController@index' );
 Route::get('/home', 'HomeController@index')->name('home');
 
 /**
  * Profile
  */
-
 Route::get('/profile', 'auth\UserController@profile')->name('Profile');
-
 Route::get('/profile/edit', 'auth\UserController@edit');
-
 Route::post('/profile/update', 'auth\UserController@update');
 
 //Avancement des commandes pour le bailleur
 Route::get('/profile/commandes', 'Lessor\AvancementController@index');
+
+//avancement des rendez-vous
+Route::get('/profile/rendez-vous', 'renter\VisitController@getUserVisits');
 
 
 

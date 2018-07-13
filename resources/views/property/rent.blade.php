@@ -13,6 +13,8 @@
                 <div class="card">
                     <div class="card-header">{{ __($value->name) }}</div>
                     <div class="card-body">
+                        
+                        
 
                         <img src={{asset("storage/".$value->medias->path."/".$value->medias->file)}} style='width:20%;float:left;'>
 

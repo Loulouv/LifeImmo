@@ -79,5 +79,11 @@ class VisitController extends Controller
 
 
 
+    public function getUserVisits(){
+        $visits = auth()->user()->visits;
+
+        return view('users.rendez-vous');
+    }
+
 
 }
