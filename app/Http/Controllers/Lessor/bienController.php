@@ -13,8 +13,13 @@ class bienController extends Controller
     public function bien()
     {
         //session()->forget('step');
-        $demande = session()->get('demande');
-        return view ('lessor.leBien', compact('demande', $demande));
+        //$demande = session()->get('demande');
+        if(session()->has('bien')){
+            $bien = session()->get('bien');
+            return view ('lessor.leBien', compact('bien', $bien));
+        }else{
+            return view ('lessor.leBien');
+        }
 
     }
 
@@ -40,8 +45,8 @@ class bienController extends Controller
         $request->offsetUnset('_token');
         $request->session()->put('bien', $request->all());
 
-        return back();
-        
+            return back();
+                    
     }
 
 }

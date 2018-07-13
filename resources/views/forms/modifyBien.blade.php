@@ -1,8 +1,9 @@
 <h2>votre bien</h2>
 
+{{-- 
 <form method="post" action="/bailleur/bien/update">
     @csrf
-
+--}}
     <p>Type de bien
     <select name="type" >
         <option @if($bien['type'] == 'Appartement') selected @endif>
@@ -85,7 +86,7 @@
                 </div>
         </div>
     
-        <div class="form-group row mb-0">
+{{--        <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary">
                         {{ __('Modifier') }}
@@ -94,3 +95,4 @@
         </div>
 
     </form>
+--}}

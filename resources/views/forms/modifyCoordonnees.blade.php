@@ -8,11 +8,7 @@
                     <div class="card-header">{{ __('Coordonnées') }}</div>
     
                     <div class="card-body">
-                        @guest
-                        <form method="POST" action="/bailleur/contact/update">
-                            @else
-                        <form method="POST" action="/bailleur/profile/update">
-                            @endguest
+                            <form method="POST" action="/bailleur/contact/save">
 
                             @csrf
     
@@ -75,7 +71,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Modifier') }}
+                                        {{ __('Valider') }}
                                     </button>
                                 </div>
                             </div>

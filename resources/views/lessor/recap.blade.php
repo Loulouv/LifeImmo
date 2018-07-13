@@ -2,8 +2,15 @@
 
 @section('content')
 
+<h2>Votre bien </h2>
 
-    @include('forms.modifyBien')
+<p>Type du bien : {{$bien['type']}} </p>
+<p>Adresse: {{$bien['addresse']}} </p>
+<p>Code postal: {{$bien['cp']}} </p>
+<p>Ville : {{$bien['city']}} </p>
+<p>Surface : {{$bien['surface']}} </p>
+<p>Nombre de pièces : {{$bien['room']}} </p>
+
 
 <h2>Votre demande</h2>
 
@@ -14,7 +21,14 @@
 @endforeach
 
 
-    @include('forms.modifyCoordonnees')
+<h2>Vos coordonnées</h2>
+
+
+<p>Nom : {{$client['fname']}} </p>
+<p>Prénom: {{$client['sname']}} </p>
+<p>Mail : {{$client['email']}} </p>
+<p>Téléphone: {{$client['phone']}} </p>
+
 
     <form method="POST" action="/bailleur/finish">
         @csrf
