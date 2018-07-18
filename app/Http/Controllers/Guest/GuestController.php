@@ -12,12 +12,27 @@ class GuestController extends Controller
 
     public function contactInformation()
     { 
-        if(session()->has('guest')){
-            $client = session()->get('guest');
-            return view ('guest.coordonnees', compact('client', $client));
-        }else{
-            return view ('guest.coordonnees');
-        } 
+
+
+        if(auth()->check()){
+            if (session('action') == 'bailleur') {
+                return redirect('/bailleur/récapitulatif');
+            }elseif( session('action') == 'locataire'){
+                return redirect('/locataire/rendez-vous');
+            }
+        }
+
+        if (auth()->guest()) {
+            if(session()->has('guest')){
+                $client = session()->get('guest');
+                return view ('guest.coordonnees', compact('client', $client));
+            }else{
+                return view ('guest.coordonnees');
+            } 
+        }
+
+        return redirect('/home');
+     
     }
 
     public function storeContactInformation(RequestUpdateUser $request)
